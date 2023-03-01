@@ -16,7 +16,6 @@ const HomeScreen = () => {
 	}, [navigation]);
 
 	return (
-// @ts-expect-error TS(2769): No overload matches this call.
 		<View className="h-full w-full justify-center px-4">
       <Error error="some crazy error"/>
 			<Button
@@ -25,9 +24,7 @@ const HomeScreen = () => {
 				onPress={() => {}}
 				label='Change this button'
 			/>
-// @ts-expect-error TS(2769): No overload matches this call.
 			<Text className="text-2xl font-bold text-center mt-8">Todays Date</Text>
-// @ts-expect-error TS(2769): No overload matches this call.
 			<Text className="text-center text-lg">
 				2023-03-01
 			</Text>
