@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-expect-error TS(2305): Module '"@react-navigation/bottom-tabs"' has no ex... Remove this comment to see the full error message
 import { createNativeBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PropTypes from "prop-types";
 

@@ -18,9 +18,11 @@ const Card: React.FC<CardType> = ({ type, cardColor, imageURL, children }) => {
 	};
 
 	if (type === "elevated")
+// @ts-expect-error TS(2322): Type 'StyleProp<{ backgroundColor?: string; border... Remove this comment to see the full error message
 		cardStyle = StyleSheet.compose(cardStyle, style.elevatedCard as any);
 
 	if (type === "outlined")
+// @ts-expect-error TS(2322): Type 'StyleProp<{ backgroundColor?: string; border... Remove this comment to see the full error message
 		cardStyle = StyleSheet.compose(
 			outlinedCardStyle,
 			style.outlinedCard as any
