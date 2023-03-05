@@ -1,0 +1,52 @@
+services:
+  db:
+    build: ./db
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+    ports:
+      - "5432:5432"
+    volumes:
+      - './db/conf/:/etc/postgresql/postgresql.conf'
+      - './server/db/spec:/mnt/spec:delegated'
+
+  client:
+    build:
+      context: ./client
+      target: development
+    ports: 
+      - 3000:3000
+    environment:
+      - 'API_HOST=server:3000'
+    volumes:
+      - './client:/usr/src/client:delegated'
+      - type: volume
+        source: log-data
+        target: /var/log
+        read_only: false
+    depends_on:
+      - 'server'
+
+  server:
+    build: 
+      context: ./server
+      target: development
+    ports:
+      - "3001:3000"
+    environment:
+      - 'DATABASE_HOST=db'
+      - 'DATABASE_PORT=5432'
+      - 'DATABASE_USERNAME=postgres'
+      - 'DATABASE_PASSWORD=postgres'
+      - 'DATABASE_NAME=postgres'
+      - 'NODE_NAME=job-board-server'
+    volumes:
+      - './server:/usr/src/server:delegated'
+      - type: volume
+        source: log-data
+        target: /var/log
+        read_only: false
+    depends_on:
+      - 'db'
+
+volumes:
+  log-data:
