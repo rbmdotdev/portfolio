@@ -1,10 +1,11 @@
+import { EntityCols } from 'src/db/entity-utils';
 import { Job } from 'src/jobs/job.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @Column(() => EntityCols)
+  entity: EntityCols;
 
   @Column()
   username: string;

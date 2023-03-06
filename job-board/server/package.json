@@ -17,7 +17,14 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migrations:generate:docker": "scripts/migrations-run-generate-in-docker.sh",
+    "migrations:generate": "scripts/migrations-generate.sh",
+    "migrations:apply:docker": "scripts/migrations-run-apply-in-docker.sh",
+    "migrations:apply": "npx typeorm-ts-node-commonjs migration:run -d ./scripts/ormconfig.ts",
+    "migrations:apply-and-run": "scripts/migrations-apply.sh && sleep infinity"
+
   },
   "dependencies": {
     "@casl/ability": "^6.3.3",

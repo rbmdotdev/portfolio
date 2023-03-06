@@ -11,6 +11,8 @@ import { OrgsModule } from './orgs/orgs.module';
 import { UserProfilesModule } from './user-profiles/user-profiles.module';
 import { OrgProfilesModule } from './org-profiles/org-profiles.module';
 import { RolesModule } from './roles/roles.module';
+import { JobTypesService } from './job-types/job-types.service';
+import { JobTypesModule } from './job-types/job-types.module';
 
 @Module({
   imports: [
@@ -44,8 +46,9 @@ import { RolesModule } from './roles/roles.module';
     UserProfilesModule,
     OrgProfilesModule,
     RolesModule,
+    JobTypesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, JobTypesService],
 })
 export class AppModule {}

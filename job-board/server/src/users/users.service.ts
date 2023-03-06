@@ -3,15 +3,19 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
+  private readonly users: User[] = [
     {
-      id: 1,
+      entity: {
+        id: 1,
+      },
       username: 'john',
       password: 'changeme',
       isAdmin: true,
     },
     {
-      id: 2,
+      entity: {
+        id: 2,
+      },
       username: 'maria',
       password: 'guess',
       isAdmin: false,
