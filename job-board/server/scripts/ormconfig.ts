@@ -10,9 +10,16 @@ const username = process.env.DATABASE_USERNAME
 const password = process.env.DATABASE_PASSWORD
   ? process.env.DATABASE_PASSWORD
   : 'postgres';
-const database = process.env.DATABASE_DATABASE_NAME
-  ? process.env.DATABASE_DATABASE_NAME
+const database = process.env.DATABASE_NAME
+  ? process.env.DATABASE_NAME
   : 'postgres';
+
+const sslConf = process.env.DATABASE_SSL_MODE
+  ? {
+      rejectUnauthorized: false,
+      ca: process.env.CA_CERT,
+    }
+  : {};
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -21,10 +28,7 @@ export const AppDataSource = new DataSource({
   username,
   password,
   database,
-  //ssl: {
-  //rejectUnauthorized: false,
-  //ca: process.env.CA_CERT,
-  //},
+  ...sslConf,
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['src/db/migrations/*.ts'],
   synchronize: false,
