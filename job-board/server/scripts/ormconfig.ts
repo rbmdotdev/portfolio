@@ -21,6 +21,7 @@ const sslConf =
         ca: process.env.CA_CERT,
       }
     : {};
+console.log('SSL Conf:', sslConf, sslConf);
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
