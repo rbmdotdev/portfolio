@@ -10,6 +10,8 @@ RUN yarn
 
 COPY . .
 
+RUN yarn global add @nestjs/cli
+
 EXPOSE 3000
 
 RUN chown -R node /usr/src/server
