@@ -21,7 +21,7 @@ const sslConf =
         ca: process.env.CA_CERT,
       }
     : {};
-console.log('SSL Conf:', sslConf, sslConf);
+console.log('SSL Conf:', sslConf);
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -30,7 +30,9 @@ export const AppDataSource = new DataSource({
   username,
   password,
   database,
-  ...sslConf,
+  ssl: {
+    ...sslConf,
+  },
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['src/db/migrations/*.ts'],
   synchronize: false,
