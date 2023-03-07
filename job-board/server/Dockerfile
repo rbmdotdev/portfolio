@@ -19,7 +19,8 @@ ENV NODE_ENV=production
 #USER node
 
 RUN yarn build
-CMD ["yarn", "start"]
+
+CMD yarn migrations:apply && yarn start
 
 FROM foundation as development
 
@@ -27,4 +28,4 @@ ENV NODE_ENV=development
 
 RUN yarn
 
-CMD ["yarn", "start:dev"]
+CMD yarn migrations:apply && yarn start:dev

@@ -20,14 +20,15 @@ import { JobTypesModule } from './job-types/job-types.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
-        const sslSettings = process.env.DATABASE_SSL_MODE
-          ? {
-              ssl: {
-                rejectUnauthorized: false,
-                ca: process.env.CA_CERT,
-              },
-            }
-          : {};
+        const sslSettings =
+          process.env.DATABASE_SSL_MODE === 'true'
+            ? {
+                ssl: {
+                  rejectUnauthorized: false,
+                  ca: process.env.CA_CERT,
+                },
+              }
+            : {};
         return {
           type: 'postgres',
           host: configService.get('DATABASE_HOST'),

@@ -14,12 +14,13 @@ const database = process.env.DATABASE_NAME
   ? process.env.DATABASE_NAME
   : 'postgres';
 
-const sslConf = process.env.DATABASE_SSL_MODE
-  ? {
-      rejectUnauthorized: false,
-      ca: process.env.CA_CERT,
-    }
-  : {};
+const sslConf =
+  process.env.DATABASE_SSL_MODE === 'true'
+    ? {
+        rejectUnauthorized: false,
+        ca: process.env.CA_CERT,
+      }
+    : {};
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
