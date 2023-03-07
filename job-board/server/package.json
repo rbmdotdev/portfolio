@@ -24,7 +24,6 @@
     "migrations:apply:docker": "scripts/migrations-run-apply-in-docker.sh",
     "migrations:apply": "npx typeorm-ts-node-commonjs migration:run -d ./scripts/ormconfig.ts",
     "migrations:apply-and-run": "scripts/migrations-apply.sh && sleep infinity"
-
   },
   "dependencies": {
     "@casl/ability": "^6.3.3",
@@ -60,6 +59,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "29.3.1",
+    "nestjs-seeder": "^0.3.0",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
