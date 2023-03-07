@@ -6,7 +6,7 @@ import {
   ExtractSubjectType,
 } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
-import { Job } from 'src/jobs/jobs.service';
+import { Job } from 'src/jobs/job.entity';
 import { User } from 'src/users/user.entity';
 
 type Subjects = InferSubjects<typeof Job | typeof User> | 'all';
@@ -34,7 +34,7 @@ export class CaslAbilityFactory {
       can(Action.Read, 'all'); // read-only access to everything
     }
 
-    can(Action.Update, Job, { authorId: user.entity.id });
+    can(Action.Update, Job, { author: user });
     cannot(Action.Delete, Job, { isPublished: true });
 
     return build({

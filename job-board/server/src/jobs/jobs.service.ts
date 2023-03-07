@@ -1,11 +1,16 @@
 import { Injectable } from '@nestjs/common';
-
-// This should be a real class/interface representing a user entity
-export class Job {
-  id: number;
-  isPublished: boolean;
-  authorId: number;
-}
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Job } from './job.entity';
 
 @Injectable()
-export class JobsService {}
+export class JobsService {
+  constructor(
+    @InjectRepository(Job)
+    private jobsR: Repository<Job>,
+  ) {}
+
+  getAllJobs(): Promise<Job[]> {
+    return this.jobsR.find();
+  }
+}

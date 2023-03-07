@@ -13,6 +13,18 @@ import { OrgProfilesModule } from './org-profiles/org-profiles.module';
 import { RolesModule } from './roles/roles.module';
 import { JobTypesService } from './job-types/job-types.service';
 import { JobTypesModule } from './job-types/job-types.module';
+import { JobType } from './job-types/job-type.entity';
+import { Job } from './jobs/job.entity';
+import { OrgProfile } from './org-profiles/org-profile.entity';
+import { Org } from './orgs/org.entity';
+import { Role } from './roles/role.entity';
+import { UserProfile } from './user-profiles/user-profile.entity';
+import { User } from './users/user.entity';
+import { JobsController } from './jobs/jobs.controller';
+import { UsersController } from './users/users.controller';
+import { RolesController } from './roles/roles.controller';
+import { OrgsController } from './orgs/orgs.controller';
+import { JobTypesController } from './job-types/job-types.controller';
 
 @Module({
   imports: [
@@ -37,13 +49,21 @@ import { JobTypesModule } from './job-types/job-types.module';
           password: configService.get('DATABASE_PASSWORD'),
           database: configService.get('DATABASE_NAME'),
           ...sslSettings,
-          entities: [],
+          entities: [JobType, Job, OrgProfile, Org, Role, UserProfile, User],
           synchronize: false,
           autoLoadEntities: true,
         };
       },
     }),
-    TypeOrmModule.forFeature([]),
+    TypeOrmModule.forFeature([
+      JobType,
+      Job,
+      OrgProfile,
+      Org,
+      Role,
+      UserProfile,
+      User,
+    ]),
     AuthModule,
     UsersModule,
     CaslModule,
@@ -54,7 +74,14 @@ import { JobTypesModule } from './job-types/job-types.module';
     RolesModule,
     JobTypesModule,
   ],
-  controllers: [AppController],
+  controllers: [
+    AppController,
+    JobsController,
+    UsersController,
+    RolesController,
+    OrgsController,
+    JobTypesController,
+  ],
   providers: [AppService, JobTypesService],
 })
 export class AppModule {}

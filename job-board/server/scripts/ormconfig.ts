@@ -17,8 +17,10 @@ const database = process.env.DATABASE_NAME
 const sslConf =
   process.env.DATABASE_SSL_MODE === 'true'
     ? {
-        rejectUnauthorized: false,
-        ca: process.env.CA_CERT,
+        ssl: {
+          rejectUnauthorized: false,
+          ca: process.env.CA_CERT,
+        },
       }
     : {};
 console.log('SSL Conf:', sslConf);
@@ -30,9 +32,7 @@ export const AppDataSource = new DataSource({
   username,
   password,
   database,
-  ssl: {
-    ...sslConf,
-  },
+  ...sslConf,
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['src/db/migrations/*.ts'],
   synchronize: false,
