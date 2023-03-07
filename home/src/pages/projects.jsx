@@ -13,14 +13,14 @@ import {
 } from '@/components/SocialIcons'
 
 const projects = [
-    {
-      name: 'The App',
-      logo: {image: logoPlanetaria},
-      start: '2023',
-      description:
-        '"The Ultimate Demo Mobile App" combines the power of React Native, deep learning image recognition, and text prediction models to provide an interactive and intelligent application that showcases some of the tools & techniques I love.',
-      link: { href: process.env.NODE_ENV === 'production' ? `${process.env.NEXT_PUBLIC_SITE_URL}/the-app`: `http://localhost:3000/the-app`, label: 'The Demo App' },
-    },
+    //{
+      //name: 'The App',
+      //logo: {image: logoPlanetaria},
+      //start: '2023',
+      //description:
+        //'"The Ultimate Demo Mobile App" combines the power of React Native, deep learning image recognition, and text prediction models to provide an interactive and intelligent application that showcases some of the tools & techniques I love.',
+      //link: { href: process.env.NODE_ENV === 'production' ? `${process.env.NEXT_PUBLIC_SITE_URL}/the-app`: `http://localhost:3000/the-app`, label: 'The Demo App' },
+    //},
     {
       name: 'Explorations in AI',
       logo: {icon: GitHubIcon},
