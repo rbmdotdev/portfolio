@@ -8,5 +8,6 @@ mkShell {
   buildInputs = [
     pkgs.nodejs
     nodePackages.npm
+    nodePackages.yarn
   ];
 }
